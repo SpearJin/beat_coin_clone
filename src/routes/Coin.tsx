@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { useQuery } from 'react-query';
 import { Link, Outlet, Route, Routes, useLocation, useMatch, useParams } from 'react-router-dom';
 import styled from 'styled-components';
@@ -85,7 +85,9 @@ function Coin() {
   const loading = infoLoading || tickersLoading;
   return (
     <Container>
-      <Helmet>{state?.name ? state.name : loading ? 'Loading...' : infoData?.name}</Helmet>
+      <Helmet>
+        <title>{state?.name ? state.name : loading ? 'Loading...' : infoData?.name}</title>
+      </Helmet>
       <Header>
         <Title>{state?.name ? state.name : loading ? 'Loading...' : infoData?.name}</Title>
       </Header>

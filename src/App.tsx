@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import Router from './routes/Router';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { HelmetProvider } from 'react-helmet-async';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Fjalla+One&family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -66,7 +67,9 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Router />
+      <HelmetProvider>
+        <Router />
+      </HelmetProvider>
       <ReactQueryDevtools initialIsOpen={true} />
     </>
   );
